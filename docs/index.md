@@ -21,3 +21,10 @@ Installation
 pip install picalib
 ```
 
+Documentation:
+
+[Docs](https://pica.readthedocs.io/en/latest/)
+
+Code: 
+
+[Github](https://github.com/PhilanthropiCat/PiCa)
