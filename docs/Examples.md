@@ -105,4 +105,5 @@ Now we are going to use the backward method to obtain the gradients of the varia
     print(f"X Gradient: {v1.gradient}, Y Gradient: {v2.gradient}, Z Gradient: {v3.gradient}")
 
 The result will be as follows:
+
     X Gradient: 0.015873015873015872, Y Gradient: -0.015873015873015872, Z Gradient: 0.0022675736961451248
