@@ -107,3 +107,113 @@ Now we are going to use the backward method to obtain the gradients of the varia
 The result will be as follows:
 
     X Gradient: 0.015873015873015872, Y Gradient: -0.015873015873015872, Z Gradient: 0.0022675736961451248
+
+## Example with Trig Functions 1
+
+Let's represent the function f(x,y,z) = Sin(x) - Cos(x)Tan(x) through a computational graph. We will obtain the result of the function and also the gradient of the variables x,y,z.
+
+First you have to install the package: 
+
+    pip install picalib
+
+Then, you have to import the library:
+
+    import pica
+
+Then we are going to initialize our variable nodes. X will have a value of 3 and will be represented by node v1, Y will have a value of 17 and will be represented by node v2 and Z will have a value of 22 and will be represented by node v3.  
+
+    g = pica.Graph()
+    v1 = pica.VariableNode(3)
+    v2 = pica.VariableNode(17)
+    v3 = pica.VariableNode(22)
+
+Then we will define node v4 as a SinNode, v5 as a CosNode, v6 as a TanNode, node v7 will be a MultNode that will multiply the value of nodes v5 and v6 and finally node v8 will be a SubNode that will subtract the value of nodes v4 and v7.
+
+    v4 = pica.SinNode(v1)
+    v5 = pica.CosNode(v2)
+    v6 = pica.TanNode(v3)
+    v7 = pica.MultNode(v5, v6)
+    v8 = pica.SubNode(v4, v7)
+
+Now we are going to initialize our nodes and make the connections between them.
+
+    g.node(v1)
+    g.node(v2)
+    g.node(v3)
+    g.connect(v1, v4)
+    g.connect(v2, v5)
+    g.connect(v3, v6)
+    g.connect(v5, v7)
+    g.connect(v6, v7)
+    g.connect(v5, v8)
+    g.connect(v7, v8)
+
+We will use the forward method to evaluate the result of the function.
+
+    result = g.forward()
+    print(f"Result: {result}")
+    
+The result will be as follows:
+
+    Result:-0.334036245057012
+
+Now we are going to use the backward method to obtain the gradients of the variables.
+
+    g.backward()
+    print(f"X Gradient: {v1.gradient}, Y Gradient: {v2.gradient}, Z Gradient: {v3.gradient}")
+
+The result will be as follows:
+
+    X Gradient: 0.9986295347545738, Y Gradient: 0.11812583640011823, Z Gradient: -1.1124092582218779
+
+## Example with Trig Functions 2
+
+Let's represent the function f(x,y) = Csc(x)/xy through a computational graph. We will obtain the result of the function and also the gradient of the variables x,y.
+
+First you have to install the package: 
+
+    pip install picalib
+
+Then, you have to import the library:
+
+    import pica
+
+Then we are going to initialize our variable nodes. X will have a value of 55 and will be represented by node v1, Y will have a value of 60 and will be represented by node v2. 
+
+    g = pica.Graph()
+    v1 = pica.VariableNode(55)
+    v2 = pica.VariableNode(60)
+
+Then we will define the v3 node which will be a CscNode that will take as parameter X, the v4 node will be a MultNode that will multiply X and Y and finally the v5 node will be a DivNode that will divide the value of v3 by the value of v4.
+
+    v3 = pica.CscNode(v1)
+    v4 = pica.MultNode(v1,v2)
+    v5 = pica.DivNode(v3,v4)
+
+Now we are going to initialize our nodes and make the connections between them.
+
+    g.node(v1)
+    g.node(v2)
+    g.connect(v1,v3)
+    g.connect(v1,v4)
+    g.connect(v2,v4)
+    g.connect(v3,v5)
+    g.connect(v4,v5)
+
+We will use the forward method to evaluate the result of the function.
+
+    result = g.forward()
+    print(f"Result: {result}")
+    
+The result will be as follows:
+
+    Result:0.0003699316935640776
+
+Now we are going to use the backward method to obtain the gradients of the variables.
+
+    g.backward()
+    print(f"X Gradient: {v1.gradient}, Y Gradient: {v2.gradient}")
+
+The result will be as follows:
+
+    X Gradient: -0.0002657549912483257, Y Gradient: -6.16552822606796e-06
