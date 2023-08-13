@@ -110,7 +110,7 @@ The result will be as follows:
 
 ## Example with Trig Functions 1
 
-Let's represent the function f(x,y,z) = Sin(x) - Cos(x)Tan(x) through a computational graph. We will obtain the result of the function and also the gradient of the variables x,y,z.
+Let's represent the function f(x,y,z) = Sin(x) - Cos(y)Tan(z) through a computational graph. We will obtain the result of the function and also the gradient of the variables x,y,z.
 
 First you have to install the package: 
 
