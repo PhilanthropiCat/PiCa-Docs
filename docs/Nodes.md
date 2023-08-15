@@ -230,3 +230,35 @@ __children__: An array where the child nodes are stored.
 
 __parents__: An array where the parent nodes are stored.
 
+## LogNode
+
+The LogNode node is used to evaluate the log of a node's value. This node takes two other nodes as parameters.
+
+The attributes of the node are:
+
+__value__: The value of the parameter node.
+
+__result__: The result of the log of the node value.
+
+__gradient__: Where the gradient of the node is to be stored.
+
+__children__: An array where the child nodes are stored.
+
+__parents__: An array where the parent nodes are stored.
+
+## LnNode
+
+The LnNode node is used to evaluate the ln of a node's value. This node takes two other nodes as parameters.
+
+The attributes of the node are:
+
+__value__: The value of the parameter node.
+
+__result__: The result of the ln of the node value.
+
+__gradient__: Where the gradient of the node is to be stored.
+
+__children__: An array where the child nodes are stored.
+
+__parents__: An array where the parent nodes are stored.
+
