@@ -134,7 +134,7 @@ __parents__: An array where the parent nodes are stored.
 
 ## SinNode
 
-The SinNode node is used to evaluate the sine of a node's value. This node takes two other nodes as parameters.
+The SinNode node is used to evaluate the sine of a node's value. This node takes one node as parameter.
 
 The attributes of the node are:
 
@@ -150,7 +150,7 @@ __parents__: An array where the parent nodes are stored.
 
 ## CosNode
 
-The CosNode node is used to evaluate the cosine of a node's value. This node takes two other nodes as parameters.
+The CosNode node is used to evaluate the cosine of a node's value. This node takes one node as parameter.
 
 The attributes of the node are:
 
@@ -166,7 +166,7 @@ __parents__: An array where the parent nodes are stored.
 
 ## TanNode
 
-The TanNode node is used to evaluate the tangent of a node's value. This node takes two other nodes as parameters.
+The TanNode node is used to evaluate the tangent of a node's value. This node takes one node as parameter.
 
 The attributes of the node are:
 
@@ -183,7 +183,7 @@ __parents__: An array where the parent nodes are stored.
 
 ## CscNode
 
-The CscNode node is used to evaluate the cosecant of a node's value. This node takes two other nodes as parameters.
+The CscNode node is used to evaluate the cosecant of a node's value. This node takes takes one node as parameter.
 
 The attributes of the node are:
 
@@ -199,7 +199,7 @@ __parents__: An array where the parent nodes are stored.
 
 ## SecNode
 
-The SecNode node is used to evaluate the secant of a node's value. This node takes two other nodes as parameters.
+The SecNode node is used to evaluate the secant of a node's value. This node takes one node as parameter.
 
 The attributes of the node are:
 
@@ -216,7 +216,7 @@ __parents__: An array where the parent nodes are stored.
 
 ## CotNode
 
-The CotNode node is used to evaluate the cotangent of a node's value. This node takes two other nodes as parameters.
+The CotNode node is used to evaluate the cotangent of a node's value. This node takes one node as parameter.
 
 The attributes of the node are:
 
@@ -232,7 +232,7 @@ __parents__: An array where the parent nodes are stored.
 
 ## LogNode
 
-The LogNode node is used to evaluate the log of a node's value. This node takes two other nodes as parameters.
+The LogNode node is used to evaluate the log of a node's value. This node takes one node as parameter.
 
 The attributes of the node are:
 
@@ -248,7 +248,7 @@ __parents__: An array where the parent nodes are stored.
 
 ## LnNode
 
-The LnNode node is used to evaluate the ln of a node's value. This node takes two other nodes as parameters.
+The LnNode node is used to evaluate the ln of a node's value. This node takes one node as parameter.
 
 The attributes of the node are:
 
@@ -261,4 +261,43 @@ __gradient__: Where the gradient of the node is to be stored.
 __children__: An array where the child nodes are stored.
 
 __parents__: An array where the parent nodes are stored.
+
+
+## PowerNode
+
+The PowerNode node is used to evaluate the variable raise to a power. This node takes two other nodes as parameters.
+
+The attributes of the node are:
+
+__value__: The value of the parameter node.
+
+__exp__: the value of the node that is going to act as an exponent .
+
+__result__: The result of the operation.
+
+__gradient__: Where the gradient of the node is to be stored.
+
+__children__: An array where the child nodes are stored.
+
+__parents__: An array where the parent nodes are stored.
+
+
+## ExpNode
+
+The ExpNode node is used to evaluate the a number or variable raise to anothe variable. This node takes two other nodes as parameters.
+
+The attributes of the node are:
+
+__value__: The value of the parameter node.
+
+__coefficient__: The number or variable that will be raise to a power.
+
+__result__: The result of the operation.
+
+__gradient__: Where the gradient of the node is to be stored.
+
+__children__: An array where the child nodes are stored.
+
+__parents__: An array where the parent nodes are stored.
+
 

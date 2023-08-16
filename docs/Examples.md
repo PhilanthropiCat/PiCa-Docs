@@ -280,3 +280,59 @@ The result will be as follows:
 
     X Gradient: -59.658635964251935, Y Gradient: 20.66558448959415
 
+
+## Example with Exponents
+
+Let's represent the function f(x,y) = (sin(x)^2) + (15^y) through a computational graph. We will obtain the result of the function and also the gradient of the variables x,y.
+
+First you have to install the package: 
+
+    pip install picalib
+
+Then, you have to import the library:
+
+    import pica
+
+Node v1 will be a node of type ValueNode with a value of 2, node v2 will be of the same type with a value of 15. Node v3 will represent variable X and will have a value of 3, while node v4 will represent variable Y and will have a value of 5. Node v5 takes the sine of the value of node v3.  Node v6 will raise node v5 to the square (node v1), and node v7 will raise node v2 to y (node v4). Finally, node v8 will add the values of nodes v6 and v7.
+
+    g = pica.Graph()
+    v1 = pica.ValueNode(2)
+    v2 = pica.ValueNode(15)
+    v3 = pica.VariableNode(3)
+    v4 = pica.VariableNode(5)
+    v5 = pica.SinNode(v3)
+    v6 = pica.PowerNode(v5,v1)
+    v7 = pica.ExpNode(v4,v2)
+    v8 = pica.SumNode(v6,v7)
+
+Now we are going to initialize our nodes and make the connections between them.
+
+    g.node(v1)
+    g.node(v2)
+    g.node(v3)
+    g.node(v4)
+    g.connect(v3,v5)
+    g.connect(v1,v6)
+    g.connect(v5,v6)
+    g.connect(v2,v7)
+    g.connect(v4,v7)
+    g.connect(v6,v8)
+    g.connect(v7,v8)
+
+We will use the forward method to evaluate the result of the function.
+
+    result = g.forward()
+    print(f"Result: {result}")
+    
+The result will be as follows:
+
+    Result:759375.0027390523
+
+Now we are going to use the backward method to obtain the gradients of the variables.
+
+    g.backward()
+    print(f"X Gradient: {v1.gradient}, Y Gradient: {v2.gradient}")
+
+The result will be as follows:
+
+    X Gradient: 0.10452846326765347, Y Gradient: 2056425.6214619908
