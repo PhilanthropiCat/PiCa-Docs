@@ -281,23 +281,54 @@ __children__: An array where the child nodes are stored.
 
 __parents__: An array where the parent nodes are stored.
 
+## SinhNode
 
-## ExpNode
-
-The ExpNode node is used to evaluate the a number or variable raise to anothe variable. This node takes two other nodes as parameters.
+The SinhNode node is used to evaluate the hyperbolic sine of a node's value. This node takes one node as parameter.
 
 The attributes of the node are:
 
 __value__: The value of the parameter node.
 
-__coefficient__: The number or variable that will be raise to a power.
-
-__result__: The result of the operation.
+__result__: The result of the hyperbolic sine of the node value.
 
 __gradient__: Where the gradient of the node is to be stored.
 
 __children__: An array where the child nodes are stored.
 
 __parents__: An array where the parent nodes are stored.
+
+## CoshNode
+
+The CoshNode node is used to evaluate the hyperbolic cosine of a node's value. This node takes one node as parameter.
+
+The attributes of the node are:
+
+__value__: The value of the parameter node.
+
+__result__: The result of the hyperbolic cosine of the node value.
+
+__gradient__: Where the gradient of the node is to be stored.
+
+__children__: An array where the child nodes are stored.
+
+__parents__: An array where the parent nodes are stored.
+
+## TanhNode
+
+The TanhNode node is used to evaluate the hyperbolic tangent of a node's value. This node takes one node as parameter.
+
+The attributes of the node are:
+
+__value__: The value of the parameter node.
+
+__result__: The result of the hyperbolic tangent of the node value.
+
+__gradient__: Where the gradient of the node is to be stored.
+
+__children__: An array where the child nodes are stored.
+
+__parents__: An array where the parent nodes are stored.
+
+
 
 

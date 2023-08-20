@@ -281,7 +281,7 @@ The result will be as follows:
     X Gradient: -59.658635964251935, Y Gradient: 20.66558448959415
 
 
-## Example with Exponents
+## Example with Powers
 
 Let's represent the function f(x,y) = (sin(x)^2) + (15^y) through a computational graph. We will obtain the result of the function and also the gradient of the variables x,y.
 
@@ -301,9 +301,9 @@ Node v1 will be a node of type ValueNode with a value of 2, node v2 will be of t
     v3 = pica.VariableNode(3)
     v4 = pica.VariableNode(5)
     v5 = pica.SinNode(v3)
-    v6 = pica.PowerNode(v5,v1)
-    v7 = pica.ExpNode(v4,v2)
-    v8 = pica.SumNode(v6,v7)
+    v6 = pica.PowerNode(v5, v1)
+    v7 = pica.PowerNode(v2, v4)
+    v8 = pica.SumNode(v6, v7)
 
 Now we are going to initialize our nodes and make the connections between them.
 
@@ -311,13 +311,13 @@ Now we are going to initialize our nodes and make the connections between them.
     g.node(v2)
     g.node(v3)
     g.node(v4)
-    g.connect(v3,v5)
-    g.connect(v1,v6)
-    g.connect(v5,v6)
-    g.connect(v2,v7)
-    g.connect(v4,v7)
-    g.connect(v6,v8)
-    g.connect(v7,v8)
+    g.connect(v3, v5)
+    g.connect(v1, v6)
+    g.connect(v5, v6)
+    g.connect(v2, v7)
+    g.connect(v4, v7)
+    g.connect(v6, v8)
+    g.connect(v7, v8)
 
 We will use the forward method to evaluate the result of the function.
 
@@ -331,8 +331,66 @@ The result will be as follows:
 Now we are going to use the backward method to obtain the gradients of the variables.
 
     g.backward()
-    print(f"X Gradient: {v1.gradient}, Y Gradient: {v2.gradient}")
+    print(f"X Gradient: {v3.gradient}, Y Gradient: {v4.gradient}")
 
 The result will be as follows:
 
     X Gradient: 0.10452846326765347, Y Gradient: 2056425.6214619908
+
+## Example with Hyperbolic Functions
+
+Let's define the function f(x,y) = Sinh(x) + Cosh(y)Tanh(z) through a computational graph. We will obtain the result of the function and also the gradient of the variables x,y and z.
+
+First you have to install the package: 
+
+    pip install picalib
+
+Then, you have to import the library:
+
+    import pica
+
+We are going to define the nodes, initialize them and create the connections between them. X= 0.3, Y=0.5, Z=0.75: 
+    
+    g = pica.Graph()
+    v1 = pica.VariableNode(0.3)
+    v2 = pica.VariableNode(0.5)
+    v3 = pica.VariableNode(0.75)
+    v4 = pica.SinhNode(v1)
+    v5 = pica.CoshNode(v2)
+    v6 = pica.TanhNode(v3)
+    v7 = pica.MultNode(v5, v6)
+    v8 = pica.SumNode(v4, v7)
+    g.node(v1)
+    g.node(v2)
+    g.node(v3)
+    g.connect(v1, v4)
+    g.connect(v2, v5)
+    g.connect(v3, v6)
+    g.connect(v5, v7)
+    g.connect(v6, v7)
+    g.connect(v4, v8)
+    g.connect(v7, v8)
+
+We will use the forward method to evaluate the result of the function.
+
+    result = g.forward()
+    print(f"Result: {result}")
+    
+The result will be as follows:
+
+    Result:1.020730743932679
+
+
+Now we are going to use the backward method to obtain the gradients of the variables.
+
+    g.backward()
+    print(f"X Gradient: {v1.gradient}, Y Gradient: {v2.gradient}, Z Gradient: {v3.gradient}")
+
+The result will be as follows:
+
+    X Gradient: 1.0453385141288605, Y Gradient: 0.3309731373782871, Z Gradient: 0.672725647891665
+
+
+
+
+
